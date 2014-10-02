@@ -4,35 +4,36 @@ using System.Collections;
 public class moveParticles : MonoBehaviour {
 	public GameObject hand;
 	public trackParticle[] trackerHolder;
-
+	public ParticleSystem stars;
+	public float maxSpeed = 0.01f;
 
 	void Start () {
-		hand = GameObject.Find("Sphere");  //get hand position
-		ParticleSystem stars = (ParticleSystem)GetComponent("ParticleSystem");
-		ParticleSystem.Particle [] ParticleList = new ParticleSystem.Particle[stars.particleCount];
-		trackParticle[] trackerHolder = new trackParticle[ParticleList.Length]; 
-	}
+			hand = GameObject.Find ("Sphere");  //get hand position
+		}
 
-	
-	// Update is called once per frame
 	void Update () {
-		//get all existing particles' positio
-		ParticleSystem stars = (ParticleSystem)GetComponent("ParticleSystem");
-		ParticleSystem.Particle [] ParticleList = new ParticleSystem.Particle[stars.particleCount];
-		stars.GetParticles(ParticleList);
 
+		//get all existing particles' position
+		stars = (ParticleSystem)GetComponent("ParticleSystem");
+		ParticleSystem.Particle [] myParticleList = new ParticleSystem.Particle[stars.particleCount];
+
+		stars.GetParticles(myParticleList); //myParticleList got all data.
+
+
+
+		
 		//steering
-		for(int i = 0; i < ParticleList.Length; i++)
+		for(int i = 0; i < myParticleList.Length; i++)
 		{
+			Vector3 desire = hand.transform.position - myParticleList[i].position;
+			desire.Normalize();
+			desire  *= maxSpeed;
+			myParticleList[i].position += desire;
 
-			tracker.Update(ParticleList[i]);
-			tracker.applyForce();
-			tracker.seek(hand.transform.position);
-
-//			float yPosition = Mathf.Sin(Time.time + Random.Range(0f, 0.01f)) * (Random.Range(0f, 0.05f));
-//			float yPosition = Mathf.Sin(Time.time) * (Time.deltaTime);
+//			print (desire);
 		}       
-		stars.SetParticles(ParticleList, stars.particleCount); //update all new particles' positions
+
+		stars.SetParticles(myParticleList, stars.particleCount); //update all new particles' positions
 	}
 
 

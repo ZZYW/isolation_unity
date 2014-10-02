@@ -13,7 +13,7 @@ public class trackParticle : MonoBehaviour {
 		acceleration = new Vector3(0,0,0);
 		velocity = new Vector3(0,0,0);
 		maxspeed = 4;
-		maxforce = 0.1;
+		maxforce = 0.1f;
 	
 	}
 	
