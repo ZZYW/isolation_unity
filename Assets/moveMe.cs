@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class moveMe : MonoBehaviour {
-	public Vector3 pos;
+	public Vector3 tempPos;
 	public KinectTrackPoints.NodeType bindNode;
 
 	// Use this for initialization
@@ -10,12 +10,13 @@ public class moveMe : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		this.transform.position = KinectTrackPoints.getNode(KinectTrackPoints.NodeType.Head);
-//		pos.x = Input.mousePosition.x;
-//		pos.y = Input.mousePosition.y;
-//		print ("x"+pos.x);
-//		print ("y"+pos.y);
-//		print ("z"+pos.z);
-//		transform.position = pos;
+		tempPos = KinectTrackPoints.getNode(KinectTrackPoints.NodeType.Head)*2.0f;
+
+		this.transform.position = Vector3.Scale(tempPos, new Vector3 (0f, 0f, 5f)); 
+
+//		print ("x"+ this.transform.position.x);
+//		print ("y"+ this.transform.position.y);
+//		print ("z"+ this.transform.position.z);
+
 	}
 }
