@@ -8,7 +8,7 @@ public class moveParticles : MonoBehaviour {
 	public float maxSpeed = 0.01f;
 
 	void Start () {
-			hand = GameObject.Find ("Sphere");  //get hand position
+			hand = GameObject.Find ("HandLeft");  //get hand position
 		}
 
 	void Update () {

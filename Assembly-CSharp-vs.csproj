@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\KinectTrackPoints.cs" />
+     <Compile Include="Assets\flickParticles.cs" />
      <Compile Include="Assets\moveMe.cs" />
+     <Compile Include="Assets\moveMeByRightHand.cs" />
      <Compile Include="Assets\moveParticles.cs" />
+     <Compile Include="Assets\moveParticlesRightHand.cs" />
      <Compile Include="Assets\orientMe.cs" />
      <Compile Include="Assets\trackParticle.cs" />
   </ItemGroup>
