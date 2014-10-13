@@ -9,7 +9,7 @@ public class moveParticlesRightHand : MonoBehaviour {
 	public float maxSpeed = 0.01f;
 	
 	void Start () {
-		hand = GameObject.Find ("HandRight");  //get hand position
+		hand = GameObject.Find ("HandLeft");  //get hand position
 	}
 	
 	void Update () {
@@ -30,7 +30,9 @@ public class moveParticlesRightHand : MonoBehaviour {
 			desire.Normalize();
 			desire  *= maxSpeed;
 			myParticleList[i].position += desire;
-			
+
+//			myParticleList[i].color = Color.red;
+			//			print ("color"+i+myParticleList[i].color);
 			//			print (desire);
 		}       
 		

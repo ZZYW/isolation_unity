@@ -317,7 +317,7 @@ public class KinectTrackPoints : MonoBehaviour
 	
 	void Start()
 	{
-		Debug.Log("Kinect Track Points :: Start");
+//		Debug.Log("Kinect Track Points :: Start");
 		if (singleton != null)
 		{
 			Debug.Log("KinectTrackPoints::start(): singleton was not null!");
@@ -409,7 +409,7 @@ public class KinectTrackPoints : MonoBehaviour
 	
 	void OnDestroy()
 	{
-		Debug.Log("kinect track points closed");
+	//	Debug.Log("kinect track points closed");
 		closeFiles();
 	}
 	//needed to record data, etc.
@@ -605,7 +605,7 @@ public class KinectTrackPoints : MonoBehaviour
 	
 	public bool _playback(String filename)
 	{
-		Debug.Log("_playback");
+	//	Debug.Log("_playback");
 		closeFiles();
 		this.timeElapsed = 0.0f; //zero timer!
 		this.lastLiveTelemetry = -stale_telemetryWait - 1.0f;

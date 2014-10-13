@@ -1,14 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/moveParticles.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/isolate.cs">
     <Files>
-      <File FileName="Assets/moveParticles.cs" Line="14" Column="18" />
-      <File FileName="Assets/moveMe.cs" Line="5" Column="1" />
-      <File FileName="Assets/orientMe.cs" Line="1" Column="1" />
-      <File FileName="Assets/KinectTrackPoints.cs" Line="1" Column="1" />
-      <File FileName="Assets/flickParticles.cs" Line="1" Column="1" />
-      <File FileName="Assets/trackParticle.cs" Line="1" Column="1" />
-      <File FileName="Assets/moveMeByRightHand.cs" Line="13" Column="17" />
+      <File FileName="Assets/isolate.cs" Line="34" Column="25" />
+      <File FileName="Assets/traceHand.cs" Line="27" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -18,7 +18,7 @@ public class trackParticle : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update (Vector3 temp_position) {
+	void theUpdate (Vector3 temp_position) {
 		position = temp_position;
 		velocity += acceleration;
 		velocity = Vector3.ClampMagnitude(velocity,maxspeed);

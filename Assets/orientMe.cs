@@ -27,7 +27,7 @@ public class orientMe : MonoBehaviour {
 				}
 		heads.Add (headTemp);
 		headDis = headTemp - headOrigin;
-		print (headDis);
+//		print (headDis);
 		this.transform.position = cameraOrigin + headDis; 
 	}
 
