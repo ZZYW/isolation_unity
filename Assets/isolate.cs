@@ -54,6 +54,7 @@ public class isolate : MonoBehaviour {
 				float margin = 50;
 
 				if( Vector3.Distance(particleList[i].position, mousePos) < isolationR ){
+					particleList[i].escaping = true;
 					Vector3 go = mousePos - particleList[i].position;
 					go.Normalize();
 					go *= ofMap(Vector3.Distance(particleList[i].position, mousePos), 0, isolationR, -20, 0);
@@ -62,9 +63,11 @@ public class isolate : MonoBehaviour {
 					particleList[i].c =new Color(255,mappedB,mappedAlpha);
 					target += go;
 				}else if(Vector3.Distance(particleList[i].position, mousePos) >= isolationR && Vector3.Distance(particleList[i].position, mousePos) < isolationR + margin) {
+					particleList[i].escaping = false;
 					float mappedAlpha = ofMap(Vector3.Distance(particleList[i].position, mousePos), isolationR, isolationR+margin,255 , particleList[i].minA);
 					particleList[i].c =new Color(255,255,255,mappedAlpha);
 				}else{
+					particleList[i].escaping = false;
 					particleList[i].dim();
 				}
 				particleList[i].calculate(target);
@@ -99,36 +102,50 @@ public class isolate : MonoBehaviour {
 		private Vector3 acceleration;
 		public Vector3 velocity;
 		public Color c;
+		public bool escaping = false;
 	
 		float maxspeed;
+		float repelMaxspeed;
 		float maxforce;
-		public float minA = 70.0f;
+		public float minA;
 
 		public isolationParticle (Vector3 _position, Vector3 _velocity)
 		{
 		
+			minA = Random.Range(0.0f,255.0f);
 			position = _position;
 			target  = new Vector3(0,0,0);
 			velocity = new Vector3(0,0,0);
 			acceleration = new Vector3 (0, 0, 0);
-			maxspeed = Random.Range(0.1f,2.0f);
+			maxspeed = Random.Range(0.1f,1.5f);
+			repelMaxspeed = Random.Range(1,4);
 			maxforce = Random.Range(0.01f, 0.06f);
-			c = new Color(255,255,255,minA);
+			c = new Color(255,255,255.0f-minA*0.4f,minA);
 		}
 
-		
 		public void calculate (Vector3 _target)
 		{
 			target = _target;
 			Vector3 desired = target - position;
 			desired.Normalize ();
-			desired *= maxspeed;
+
+			if(!escaping){
+				desired *= maxspeed;
+			}else{
+				desired*=repelMaxspeed;
+			}
+
+
 			Vector3 steer = desired - velocity;
 			steer = Vector3.ClampMagnitude (steer, maxforce);
 			acceleration += steer;
 
 			velocity += acceleration;
-			velocity = Vector3.ClampMagnitude(velocity, maxspeed);
+			if(!escaping){
+				velocity = Vector3.ClampMagnitude(velocity, maxspeed);
+			}else{
+				velocity = Vector3.ClampMagnitude(velocity, repelMaxspeed);
+			}
 			position += velocity;
 			acceleration *= 0;
 		}
@@ -141,6 +158,10 @@ public class isolate : MonoBehaviour {
 				c = tempC;
 			}
 		
+		}
+
+		public void dimSpeed(){
+			velocity = Vector3.ClampMagnitude(velocity,maxspeed);
 		}
 	}
 

@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/isolate.cs">
     <Files>
-      <File FileName="Assets/isolate.cs" Line="34" Column="25" />
+      <File FileName="Assets/isolate.cs" Line="9" Column="30" />
       <File FileName="Assets/traceHand.cs" Line="27" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
